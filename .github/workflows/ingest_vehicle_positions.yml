@@ -1,113 +1,26 @@
-import json
-import urllib.request
-from datetime import datetime, timezone
-from pathlib import Path
+name: Ingest Adelaide Metro Vehicle Positions
 
-from google.transit import gtfs_realtime_pb2
+on:
+  workflow_dispatch:
 
+permissions:
+  contents: write
 
-API_URL = "https://gtfs.adelaidemetro.com.au/v1/realtime/vehicle_positions"
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
 
-OUTPUT_DIR = Path("data/raw")
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
-timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-request = urllib.request.Request(
-    API_URL,
-    headers={
-        "User-Agent": "Mozilla/5.0"
-    }
-)
+      - name: Install dependencies
+        run: pip install gtfs-realtime-bindings
 
-with urllib.request.urlopen(request, timeout=30) as response:
-    raw_data = response.read()
-
-feed = gtfs_realtime_pb2.FeedMessage()
-feed.ParseFromString(raw_data)
-
-vehicles = []
-
-for entity in feed.entity:
-
-    if not entity.HasField("vehicle"):
-        continue
-
-    vehicle = entity.vehicle
-
-    record = {
-        "entity_id": entity.id,
-        "vehicle_id": (
-            vehicle.vehicle.id
-            if vehicle.HasField("vehicle") and vehicle.vehicle.HasField("id")
-            else None
-        ),
-        "vehicle_label": (
-            vehicle.vehicle.label
-            if vehicle.HasField("vehicle") and vehicle.vehicle.HasField("label")
-            else None
-        ),
-        "trip_id": (
-            vehicle.trip.trip_id
-            if vehicle.HasField("trip") and vehicle.trip.HasField("trip_id")
-            else None
-        ),
-        "route_id": (
-            vehicle.trip.route_id
-            if vehicle.HasField("trip") and vehicle.trip.HasField("route_id")
-            else None
-        ),
-        "direction_id": (
-            vehicle.trip.direction_id
-            if vehicle.HasField("trip") and vehicle.trip.HasField("direction_id")
-            else None
-        ),
-        "latitude": (
-            vehicle.position.latitude
-            if vehicle.HasField("position")
-            else None
-        ),
-        "longitude": (
-            vehicle.position.longitude
-            if vehicle.HasField("position")
-            else None
-        ),
-        "bearing": (
-            vehicle.position.bearing
-            if vehicle.HasField("position") and vehicle.position.HasField("bearing")
-            else None
-        ),
-        "speed": (
-            vehicle.position.speed
-            if vehicle.HasField("position") and vehicle.position.HasField("speed")
-            else None
-        ),
-        "stop_id": (
-            vehicle.stop_id
-            if vehicle.HasField("stop_id")
-            else None
-        ),
-        "timestamp": (
-            vehicle.timestamp
-            if vehicle.HasField("timestamp")
-            else None
-        ),
-    }
-
-    vehicles.append(record)
-
-
-output = {
-    "ingested_at_utc": timestamp,
-    "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
-    "vehicle_count": len(vehicles),
-    "vehicles": vehicles,
-}
-
-output_file = OUTPUT_DIR / f"vehicle_positions_{timestamp}.json"
-
-with open(output_file, "w", encoding="utf-8") as file:
-    json.dump(output, file, indent=2)
-
-print(f"Saved: {output_file}")
-print(f"Vehicles: {len(vehicles)}")
+      - name: Run vehicle position ingestion
+        run: python src/ingest_vehicle_positions.py
