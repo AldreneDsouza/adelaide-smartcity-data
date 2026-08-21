@@ -3,6 +3,9 @@ name: Ingest Adelaide Metro Vehicle Positions
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   ingest:
     runs-on: ubuntu-latest
@@ -18,6 +21,17 @@ jobs:
 
       - name: Run vehicle position ingestion
         run: python src/ingest_vehicle_positions.py
+
+      - name: Create latest JSON file
+        run: cp data/raw/vehicle_positions_*.json data/raw/latest_vehicle_positions.json
+
+      - name: Commit latest vehicle position data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw/latest_vehicle_positions.json
+          git diff --cached --quiet || git commit -m "Update latest vehicle positions"
+          git push
 
       - name: Upload raw data
         uses: actions/upload-artifact@v4
