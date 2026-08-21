@@ -24,3 +24,14 @@ jobs:
 
       - name: Run vehicle position ingestion
         run: python src/ingest_vehicle_positions.py
+
+      - name: Save latest vehicle data
+        run: cp "$(ls -t data/raw/vehicle_positions_*.json | head -1)" data/raw/latest_vehicle_positions.json
+
+      - name: Commit latest vehicle data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw/latest_vehicle_positions.json
+          git commit -m "Update latest vehicle position data" || echo "No changes to commit"
+          git push
