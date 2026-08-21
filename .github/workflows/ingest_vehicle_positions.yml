@@ -1,1 +1,29 @@
+name: Ingest Adelaide Metro Vehicle Positions
 
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run vehicle position ingestion
+        run: python src/ingest_vehicle_positions.py
+
+      - name: Upload raw data
+        uses: actions/upload-artifact@v4
+        with:
+          name: vehicle-position-data
+          path: data/raw/
