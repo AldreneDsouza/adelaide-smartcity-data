@@ -1,10 +1,12 @@
 import json
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-import urllib.request
+
+from google.transit import gtfs_realtime_pb2
 
 
-API_URL = "https://gtfs.adelaidemetro.com.au/v1/realtime/vehicle_positions/debug"
+API_URL = "https://gtfs.adelaidemetro.com.au/v1/realtime/vehicle_positions"
 
 OUTPUT_DIR = Path("data/raw")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -19,19 +21,93 @@ request = urllib.request.Request(
 )
 
 with urllib.request.urlopen(request, timeout=30) as response:
-    data = response.read().decode("utf-8")
+    raw_data = response.read()
+
+feed = gtfs_realtime_pb2.FeedMessage()
+feed.ParseFromString(raw_data)
+
+vehicles = []
+
+for entity in feed.entity:
+
+    if not entity.HasField("vehicle"):
+        continue
+
+    vehicle = entity.vehicle
+
+    record = {
+        "entity_id": entity.id,
+        "vehicle_id": (
+            vehicle.vehicle.id
+            if vehicle.HasField("vehicle") and vehicle.vehicle.HasField("id")
+            else None
+        ),
+        "vehicle_label": (
+            vehicle.vehicle.label
+            if vehicle.HasField("vehicle") and vehicle.vehicle.HasField("label")
+            else None
+        ),
+        "trip_id": (
+            vehicle.trip.trip_id
+            if vehicle.HasField("trip") and vehicle.trip.HasField("trip_id")
+            else None
+        ),
+        "route_id": (
+            vehicle.trip.route_id
+            if vehicle.HasField("trip") and vehicle.trip.HasField("route_id")
+            else None
+        ),
+        "direction_id": (
+            vehicle.trip.direction_id
+            if vehicle.HasField("trip") and vehicle.trip.HasField("direction_id")
+            else None
+        ),
+        "latitude": (
+            vehicle.position.latitude
+            if vehicle.HasField("position")
+            else None
+        ),
+        "longitude": (
+            vehicle.position.longitude
+            if vehicle.HasField("position")
+            else None
+        ),
+        "bearing": (
+            vehicle.position.bearing
+            if vehicle.HasField("position") and vehicle.position.HasField("bearing")
+            else None
+        ),
+        "speed": (
+            vehicle.position.speed
+            if vehicle.HasField("position") and vehicle.position.HasField("speed")
+            else None
+        ),
+        "stop_id": (
+            vehicle.stop_id
+            if vehicle.HasField("stop_id")
+            else None
+        ),
+        "timestamp": (
+            vehicle.timestamp
+            if vehicle.HasField("timestamp")
+            else None
+        ),
+    }
+
+    vehicles.append(record)
+
+
+output = {
+    "ingested_at_utc": timestamp,
+    "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+    "vehicle_count": len(vehicles),
+    "vehicles": vehicles,
+}
 
 output_file = OUTPUT_DIR / f"vehicle_positions_{timestamp}.json"
 
 with open(output_file, "w", encoding="utf-8") as file:
-    json.dump(
-        {
-            "ingested_at_utc": timestamp,
-            "source": "Adelaide Metro GTFS Realtime",
-            "data": data
-        },
-        file,
-        indent=2
-    )
+    json.dump(output, file, indent=2)
 
 print(f"Saved: {output_file}")
+print(f"Vehicles: {len(vehicles)}")
