@@ -3,6 +3,8 @@
 
 An end-to-end Microsoft Fabric analytics project that ingests Adelaide Metro vehicle-position data, transforms it in a Fabric Lakehouse, and presents live operational insights through an interactive Power BI dashboard.
 
+![Adelaide Smart City Dashboard](Dashboard%20Screenshot.png)
+
 The solution is designed to automatically ingest new vehicle-position data every 5 minutes and provide an up-to-date view of vehicle activity across the Adelaide metropolitan network.
 
 ---
