@@ -30,6 +30,8 @@ The dashboard provides an operational view of:
 
 ## 🏗️ Architecture
 
+![Adelaide Smart City Architecture](architecture.png)
+
 The solution follows a simple end-to-end analytics pipeline:
 
 1. **Data Source**  
@@ -72,6 +74,16 @@ This provided a practical near-real-time analytics solution while working within
 ### Key Learning
 
 This was a useful lesson in designing data pipelines around real-world constraints. Rather than depending on a single ingestion method, I explored an alternative architecture that still allowed the dashboard to receive continuously updated data.
+
+## 🔗 Data Source
+
+This project uses Adelaide Metro vehicle-position data provided through the Adelaide Metro GTFS-Realtime feed.
+
+**Official source:** [Adelaide Metro GTFS-Realtime API](https://gtfs.adelaidemetro.com.au/)
+
+The vehicle-position feed provides current vehicle locations and related information in GTFS-Realtime format.
+
+The source data is then passed through the GitHub and Microsoft Fabric ingestion workflow used in this project.
 
 
 ## 📈 Dashboard
