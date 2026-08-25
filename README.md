@@ -1,1 +1,0 @@
-# adelaide-smartcity-data

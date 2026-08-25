@@ -1,0 +1,63 @@
+# Adelaide Smart City — Real-Time Vehicle Analytics
+
+
+An end-to-end Microsoft Fabric analytics project that ingests Adelaide Metro vehicle-position data, transforms it in a Fabric Lakehouse, and presents live operational insights through an interactive Power BI dashboard.
+
+The solution is designed to automatically ingest new vehicle-position data every 5 minutes and provide an up-to-date view of vehicle activity across the Adelaide metropolitan network.
+
+---
+
+## 🚍 Project Overview
+
+This project demonstrates a complete modern data analytics workflow:
+
+**Data ingestion → Data storage → Transformation → Aggregation → Semantic model → Power BI visualization**
+
+The dashboard provides an operational view of:
+
+- Total vehicles currently represented in the dataset
+- Average vehicle speed
+- Maximum recorded speed
+- Number of active routes
+- Live vehicle locations across Adelaide
+- Vehicle count by route
+- Average speed by route
+
+---
+
+## 🏗️ Architecture
+
+```text
+Adelaide Metro Vehicle Data
+            │
+            ▼
+      GitHub Repository
+            │
+            ▼
+     Microsoft Fabric
+       Data Pipeline
+            │
+            ▼
+        Copy Job
+            │
+            ▼
+      Fabric Lakehouse
+            │
+            ▼
+     PySpark Notebook
+   Transform Vehicle Positions
+            │
+            ├───────────────┐
+            ▼               ▼
+vehicle_positions_clean   vehicle_route_summary
+            │               │
+            └───────┬───────┘
+                    ▼
+            Fabric Semantic Model
+                    │
+                    ▼
+             Power BI Dashboard
+                    │
+                    ▼
+        Adelaide Smart City
+          Vehicle Operations
