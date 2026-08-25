@@ -30,7 +30,7 @@ The dashboard provides an operational view of:
 
 ## 🏗️ Architecture
 
-![Adelaide Smart City Architecture](architecture.png)
+![Adelaide Smart City Architecture](Architecture.png)
 
 The solution follows a simple end-to-end analytics pipeline:
 
