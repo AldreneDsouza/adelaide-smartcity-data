@@ -1,4 +1,4 @@
-# Adelaide Smart City — Real-Time Vehicle Analytics
+# Adelaide Smart City — Real Time Vehicle Analytics
 
 An end to end Microsoft Fabric project I built using Adelaide Metro vehicle position data.
 
@@ -6,7 +6,7 @@ The solution automatically ingests new vehicle position data every 5 minutes, st
 
 ![Adelaide Smart City Dashboard](Dashboard%20Screenshot.png)
 
-The solution is designed to automatically ingest new vehicle position data every 5 minutes and provide an up-to-date view of vehicle activity across the Adelaide metropolitan network.
+The solution is designed to automatically ingest new vehicle position data every 5 minutes and provide an up to date view of vehicle activity across the Adelaide metropolitan network.
 
 ---
 
@@ -44,7 +44,7 @@ The solution follows a simple end-to-end analytics pipeline:
    The incoming data is stored in a Microsoft Fabric Lakehouse.
 
 4. **Data Transformation**  
-   A Fabric Notebook cleans and transforms the vehicle-position data and creates route-level summary information.
+   A Fabric Notebook cleans and transforms the vehicle position data and creates route level summary information.
 
 5. **Semantic Model**  
    The transformed data is exposed through a Power BI semantic model.
@@ -55,9 +55,9 @@ The solution follows a simple end-to-end analytics pipeline:
 
    ## 🧩 Challenges & Solution
 
-One of the main challenges was obtaining the highest-frequency vehicle-position data directly through the Microsoft Fabric environment.
+One of the main challenges was obtaining the highest frequency vehicle position data directly through the Microsoft Fabric environment.
 
-The source data was available at a higher frequency, but access to the required real-time capability was limited by the available Fabric subscription and configuration.
+The source data was available at a higher frequency, but access to the required real time capability was limited by the available Fabric subscription and configuration.
 
 ### Solution
 
@@ -67,21 +67,21 @@ The workflow:
 
 **Vehicle Data Source → GitHub → Fabric Pipeline → Lakehouse → Transformation → Power BI**
 
-GitHub is automatically updated with the latest vehicle-position data, and the Microsoft Fabric pipeline is scheduled to ingest the updated data every **5 minutes**.
+GitHub is automatically updated with the latest vehicle position data, and the Microsoft Fabric pipeline is scheduled to ingest the updated data every **5 minutes**.
 
-This provided a practical near-real-time analytics solution while working within the available platform limitations.
+This provided a practical near real time analytics solution while working within the available platform limitations.
 
 ### Key Learning
 
-This was a useful lesson in designing data pipelines around real-world constraints. Rather than depending on a single ingestion method, I explored an alternative architecture that still allowed the dashboard to receive continuously updated data.
+This was a useful lesson in designing data pipelines around real world constraints. Rather than depending on a single ingestion method, I explored an alternative architecture that still allowed the dashboard to receive continuously updated data.
 
 ## 🔗 Data Source
 
-This project uses Adelaide Metro vehicle-position data provided through the Adelaide Metro GTFS-Realtime feed.
+This project uses Adelaide Metro vehicle-position data provided through the Adelaide Metro GTFS Realtime feed.
 
 **Official source:** [Adelaide Metro GTFS-Realtime API](https://gtfs.adelaidemetro.com.au/)
 
-The vehicle-position feed provides current vehicle locations and related information in GTFS-Realtime format.
+The vehicle position feed provides current vehicle locations and related information in GTFS Realtime format.
 
 The source data is then passed through the GitHub and Microsoft Fabric ingestion workflow used in this project.
 
@@ -97,10 +97,22 @@ The Power BI dashboard provides an interactive view of the current Adelaide Metr
 - **Maximum Speed** — highest recorded vehicle speed
 - **Active Routes** — number of routes currently represented
 
+## ⚙️ Challenges & Engineering Decisions
+
+One of the main challenges was working with the availability and access limitations of the real time vehicle position data.
+
+The original Adelaide Metro data source provides vehicle position updates at a higher frequency. However, the available Microsoft Fabric environment did not provide direct access to the full 15 second real time feed required for the project.
+
+To work around this limitation, I used the available data through GitHub and designed an automated ingestion workflow that retrieves updated vehicle position data every 5 minutes.
+
+This approach allowed the project to maintain continuously refreshed data while working within the available platform and subscription constraints.
+
+This was a useful lesson in designing data pipelines around real world platform limitations and choosing a practical ingestion strategy rather than relying on a single data access method. 
+
 ### Visualizations
 
 - **Live Vehicle Locations** — interactive map of vehicle positions across Adelaide
 - **Vehicles by Route** — vehicle distribution across routes
 - **Average Speed by Route** — comparison of average speeds across routes
 
-The dashboard updates as new data is processed through the automated 5-minute ingestion pipeline.
+The dashboard is refreshed as new vehicle position data is processed through the automated 5 minute ingestion pipeline
