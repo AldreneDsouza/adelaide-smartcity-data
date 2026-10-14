@@ -1,0 +1,21 @@
+{
+  "ingested_at_utc": "20261014T150421Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 1,
+  "vehicles": [
+    {
+      "entity_id": "V6837063128",
+      "vehicle_id": "3128",
+      "vehicle_label": "3128",
+      "trip_id": "683706",
+      "route_id": "BEL",
+      "direction_id": 0,
+      "latitude": -34.95203399658203,
+      "longitude": 138.58511352539062,
+      "bearing": 352.3900146484375,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1791990238
+    }
+  ]
+}
