@@ -1,0 +1,91 @@
+{
+  "ingested_at_utc": "20261024T190121Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 6,
+  "vehicles": [
+    {
+      "entity_id": "V11369521125",
+      "vehicle_id": "1125",
+      "vehicle_label": "1125",
+      "trip_id": "1136952",
+      "route_id": "J1A",
+      "direction_id": 0,
+      "latitude": -34.886558532714844,
+      "longitude": 138.63917541503906,
+      "bearing": 242.83999633789062,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1792868455
+    },
+    {
+      "entity_id": "V11369811128",
+      "vehicle_id": "1128",
+      "vehicle_label": "1128",
+      "trip_id": "1136981",
+      "route_id": "J1T",
+      "direction_id": 1,
+      "latitude": -34.8830680847168,
+      "longitude": 138.64613342285156,
+      "bearing": 60.11000061035156,
+      "speed": 21.399999618530273,
+      "stop_id": null,
+      "timestamp": 1792868450
+    },
+    {
+      "entity_id": "V11369501142",
+      "vehicle_id": "1142",
+      "vehicle_label": "1142",
+      "trip_id": "1136950",
+      "route_id": "J1A",
+      "direction_id": 0,
+      "latitude": -34.932701110839844,
+      "longitude": 138.55426025390625,
+      "bearing": 263.510009765625,
+      "speed": 12.100000381469727,
+      "stop_id": null,
+      "timestamp": 1792868460
+    },
+    {
+      "entity_id": "V10904702601",
+      "vehicle_id": "2601",
+      "vehicle_label": "2601",
+      "trip_id": "1090470",
+      "route_id": "721",
+      "direction_id": 0,
+      "latitude": -35.020660400390625,
+      "longitude": 138.5677490234375,
+      "bearing": 177.3300018310547,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1792868449
+    },
+    {
+      "entity_id": "V11754253522",
+      "vehicle_id": "3522",
+      "vehicle_label": "3522",
+      "trip_id": "1175425",
+      "route_id": "N801",
+      "direction_id": 1,
+      "latitude": -35.051841735839844,
+      "longitude": 138.84373474121094,
+      "bearing": 120.47000122070312,
+      "speed": 16.399999618530273,
+      "stop_id": null,
+      "timestamp": 1792868453
+    },
+    {
+      "entity_id": "V6850444016",
+      "vehicle_id": "4016",
+      "vehicle_label": "4016",
+      "trip_id": "685044",
+      "route_id": "GAWC",
+      "direction_id": 0,
+      "latitude": -34.60923385620117,
+      "longitude": 138.73944091796875,
+      "bearing": 4.78000020980835,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1792868457
+    }
+  ]
+}
