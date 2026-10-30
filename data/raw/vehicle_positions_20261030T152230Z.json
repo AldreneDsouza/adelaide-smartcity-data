@@ -1,0 +1,35 @@
+{
+  "ingested_at_utc": "20261030T152230Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 2,
+  "vehicles": [
+    {
+      "entity_id": "V6840744017",
+      "vehicle_id": "4017",
+      "vehicle_label": "4017",
+      "trip_id": "684074",
+      "route_id": "SEAFRD",
+      "direction_id": 1,
+      "latitude": -35.17573165893555,
+      "longitude": 138.48919677734375,
+      "bearing": 0.0,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1793373739
+    },
+    {
+      "entity_id": "V10862474021",
+      "vehicle_id": "4021",
+      "vehicle_label": "4021",
+      "trip_id": "1086247",
+      "route_id": "GAW",
+      "direction_id": 1,
+      "latitude": -34.610374450683594,
+      "longitude": 138.73934936523438,
+      "bearing": 189.77999877929688,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1793373738
+    }
+  ]
+}
