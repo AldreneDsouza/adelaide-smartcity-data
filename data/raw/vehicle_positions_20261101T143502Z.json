@@ -1,0 +1,77 @@
+{
+  "ingested_at_utc": "20261101T143502Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 5,
+  "vehicles": [
+    {
+      "entity_id": "V1133311106",
+      "vehicle_id": "106",
+      "vehicle_label": "106",
+      "trip_id": "1133311",
+      "route_id": "GLNELG",
+      "direction_id": 1,
+      "latitude": -34.980045318603516,
+      "longitude": 138.5190887451172,
+      "bearing": 86.51000213623047,
+      "speed": 7.800000190734863,
+      "stop_id": null,
+      "timestamp": 1793543689
+    },
+    {
+      "entity_id": "V1133313113",
+      "vehicle_id": "113",
+      "vehicle_label": "113",
+      "trip_id": "1133313",
+      "route_id": "GLNELG",
+      "direction_id": 1,
+      "latitude": -34.958457946777344,
+      "longitude": 138.5723419189453,
+      "bearing": 237.99000549316406,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1793543682
+    },
+    {
+      "entity_id": "V9251823020",
+      "vehicle_id": "3020",
+      "vehicle_label": "3020",
+      "trip_id": "925182",
+      "route_id": "OUTHA",
+      "direction_id": 1,
+      "latitude": -34.80536651611328,
+      "longitude": 138.49911499023438,
+      "bearing": 179.60000610351562,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1793543685
+    },
+    {
+      "entity_id": "V6838233140",
+      "vehicle_id": "3140",
+      "vehicle_label": "3140",
+      "trip_id": "683823",
+      "route_id": "BEL",
+      "direction_id": 0,
+      "latitude": -35.0110969543457,
+      "longitude": 138.60101318359375,
+      "bearing": 0.8100000023841858,
+      "speed": 12.300000190734863,
+      "stop_id": null,
+      "timestamp": 1793543677
+    },
+    {
+      "entity_id": "V11755323228",
+      "vehicle_id": "3228",
+      "vehicle_label": "3228",
+      "trip_id": "1175532",
+      "route_id": "801",
+      "direction_id": 1,
+      "latitude": -35.06319046020508,
+      "longitude": 138.8619842529297,
+      "bearing": 334.55999755859375,
+      "speed": 0.5,
+      "stop_id": null,
+      "timestamp": 1793543688
+    }
+  ]
+}
