@@ -1,0 +1,21 @@
+{
+  "ingested_at_utc": "20261108T154443Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 1,
+  "vehicles": [
+    {
+      "entity_id": "V6842464018",
+      "vehicle_id": "4018",
+      "vehicle_label": "4018",
+      "trip_id": "684246",
+      "route_id": "SEAFRD",
+      "direction_id": 0,
+      "latitude": -34.9911994934082,
+      "longitude": 138.56097412109375,
+      "bearing": 4.25,
+      "speed": 0.0,
+      "stop_id": null,
+      "timestamp": 1794152664
+    }
+  ]
+}
