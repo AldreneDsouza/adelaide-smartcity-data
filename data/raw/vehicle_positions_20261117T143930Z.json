@@ -1,0 +1,63 @@
+{
+  "ingested_at_utc": "20261117T143930Z",
+  "source": "Adelaide Metro GTFS Realtime Vehicle Positions",
+  "vehicle_count": 4,
+  "vehicles": [
+    {
+      "entity_id": "V1187312209",
+      "vehicle_id": "209",
+      "vehicle_label": "209",
+      "trip_id": "1187312",
+      "route_id": "GLNELG",
+      "direction_id": 1,
+      "latitude": -34.970787048339844,
+      "longitude": 138.54798889160156,
+      "bearing": 245.6199951171875,
+      "speed": 5.300000190734863,
+      "stop_id": null,
+      "timestamp": 1794926359
+    },
+    {
+      "entity_id": "V9246983024",
+      "vehicle_id": "3024",
+      "vehicle_label": "3024",
+      "trip_id": "924698",
+      "route_id": "OUTHA",
+      "direction_id": 0,
+      "latitude": -34.8503532409668,
+      "longitude": 138.5006103515625,
+      "bearing": 78.22000122070312,
+      "speed": 14.5,
+      "stop_id": null,
+      "timestamp": 1794926356
+    },
+    {
+      "entity_id": "V6837053028",
+      "vehicle_id": "3028",
+      "vehicle_label": "3028",
+      "trip_id": "683705",
+      "route_id": "BEL",
+      "direction_id": 0,
+      "latitude": -34.98766326904297,
+      "longitude": 138.60995483398438,
+      "bearing": 23.59000015258789,
+      "speed": 15.800000190734863,
+      "stop_id": null,
+      "timestamp": 1794926353
+    },
+    {
+      "entity_id": "V6837063026",
+      "vehicle_id": "3026",
+      "vehicle_label": "3026",
+      "trip_id": "683706",
+      "route_id": "BEL",
+      "direction_id": 0,
+      "latitude": -35.00556182861328,
+      "longitude": 138.62432861328125,
+      "bearing": 170.97000122070312,
+      "speed": 12.699999809265137,
+      "stop_id": null,
+      "timestamp": 1794926357
+    }
+  ]
+}
